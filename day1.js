@@ -10,7 +10,10 @@ var createHelloWorld = function() {
     };
 };
 
-/// arrow syntax
+/// arrow syntax 1
 var createHelloWorld = function() {
     return () => "Hello World";
 };
+
+/// arrow syntax 2  
+var createHelloWorld = () => () => "Hello World"
