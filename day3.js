@@ -83,7 +83,31 @@ var createCounter = function(init) {
     return new Counter(init);
 };
 
-// 5. Using Proxy
+// 5. Using prototype
+
+function Counter(init) {
+    this.init = init;
+    this.counter = init;
+}
+
+Counter.prototype.increment = function() {
+    return ++this.counter;
+};
+
+Counter.prototype.decrement = function() {
+    return --this.counter;
+};
+
+Counter.prototype.reset = function() {
+    return (this.counter = this.init);
+};
+
+function createCounter(init) {
+    return new Counter(init);
+}
+
+
+// 6. Using Proxy
 
 var createCounter = function(init) {
     let counter = init;
