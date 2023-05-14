@@ -57,8 +57,8 @@ var map = function(arr, fn) {
 // for...in loop
 var map = function(arr, fn) {
     const newArr = [];
-    for (const i in arr) {
-        newArr[i] = fn(arr[i], Number(i));
+    for (const index in arr) {
+        newArr.push(fn(arr[index], Number(index)));
     }
     return newArr
 }
