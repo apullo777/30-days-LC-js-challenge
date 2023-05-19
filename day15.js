@@ -9,3 +9,32 @@ The first 2 function calls would be cancelled, and the 3rd function call would b
 If instead t = 35ms, The 1st call would be cancelled, 
 the 2nd would be executed at 95ms, and the 3rd would be executed at 135ms. */
 
+/**
+ * @param {Function} fn
+ * @param {number} t milliseconds
+ * @return {Function}
+ */
+
+// setTimeout + clearTimeout
+var debounce = function(fn, t) {
+    return function(...args) {
+        clearTimeout(fn.timeout);
+        fn.timeout = setTimeout(() => fn.apply(this, args), t);
+    }
+};
+
+// setInterval + clearInterval
+var debounce = function(fn, t) {
+    let interval;
+    return function(...args) {
+        clearInterval(interval);
+        interval = setTimeout(() => fn.apply(this, args), t);
+    }
+};
+
+/**
+ * const log = debounce(console.log, 100);
+ * log('Hello'); // cancelled
+ * log('Hello'); // cancelled
+ * log('Hello'); // Logged at t=100ms
+ */
